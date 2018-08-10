@@ -6784,7 +6784,7 @@ static const char* getErrorString( int code )
 
 #if defined(__LINUX_ALSA__)
 
-#include <alsa/asoundlib.h>
+#include <tinyalsa/asoundlib.h>
 #include <unistd.h>
 
   // A structure to hold various information related to the ALSA API
