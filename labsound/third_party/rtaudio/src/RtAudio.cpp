@@ -8055,7 +8055,9 @@ static void *alsaCallbackHandler( void *ptr )
 #endif
 
   while ( *isRunning == true ) {
-    //pthread_testcancel();
+    #ifndef ANDROID
+    pthread_testcancel();
+    #endif
     object->callbackEvent();
   }
 
@@ -8135,7 +8137,9 @@ static void *pulseaudio_callback( void * user )
   volatile bool *isRunning = &cbi->isRunning;
 
   while ( *isRunning ) {
-    //pthread_testcancel();
+    #ifndef ANDROID
+    pthread_testcancel();
+    #endif
     context->callbackEvent();
   }
 
@@ -9487,7 +9491,9 @@ static void *ossCallbackHandler( void *ptr )
   bool *isRunning = &info->isRunning;
 
   while ( *isRunning == true ) {
-    //pthread_testcancel();
+    #ifndef ANDROID
+    pthread_testcancel();
+    #endif
     object->callbackEvent();
   }
 
