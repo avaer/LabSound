@@ -6784,7 +6784,7 @@ static const char* getErrorString( int code )
 
 #if defined(__LINUX_ALSA__)
 
-#include <alsa/asoundlib.h>
+#include <tinyalsa/asoundlib.h>
 #include <unistd.h>
 
   // A structure to hold various information related to the ALSA API
@@ -8055,9 +8055,7 @@ static void *alsaCallbackHandler( void *ptr )
 #endif
 
   while ( *isRunning == true ) {
-#if !defined(LUMIN) && !defined(ANDROID)
-    pthread_testcancel();
-#endif
+    //pthread_testcancel();
     object->callbackEvent();
   }
 
@@ -10121,8 +10119,8 @@ void RtApi :: convertBuffer( char *outBuffer, char *inBuffer, ConvertInfo &info 
 
 void RtApi :: byteSwapBuffer( char *buffer, unsigned int samples, RtAudioFormat format )
 {
-  char val;
-  char *ptr;
+  register char val;
+  register char *ptr;
 
   ptr = buffer;
   if ( format == RTAUDIO_SINT16 ) {
