@@ -35,32 +35,54 @@
             '-Wl,-Bsymbolic',
           ],
         }],
-        ['OS=="win"', {
-          'library_dirs': [
-            '<(module_root_dir)/labsound/build/x64/Release',
+      ['OS=="win"', {
+        'configurations': {
+          'Debug': {
+            'msvs_settings': {
+              'VCCLCompilerTool': {
+                'RuntimeLibrary': '3' # /MDd
+              },
+            },
+            'library_dirs': [
+              '<(module_root_dir)/labsound/build/x64/Debug',
             "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win')\")",
-          ],
-          'libraries': [
-            'LabSound.lib',
-            'avformat.lib',
-            'avcodec.lib',
-            'avutil.lib',
-            'swscale.lib',
-            'swresample.lib',
-          ],
-          'copies': [
-            {
-              'destination': '<(module_root_dir)/build/Release/',
-              'files': [
-                "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/avformat-58.dll')\")",
-                "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/avcodec-58.dll')\")",
-                "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/avutil-56.dll')\")",
-                "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/swscale-5.dll')\")",
-                "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/swresample-3.dll')\")",
-              ]
-            }
-          ],
+            ],
+          },
+          'Release': {
+            'library_dirs': [
+              '<(module_root_dir)/labsound/build/x64/Release',
+            "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win')\")",
+            ],
+          },
+        },
+        'copies': [{
+          'destination': '<(module_root_dir)/build/Debug/',
+          'files': [
+            "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/avformat-58.dll')\")",
+          "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/avcodec-58.dll')\")",
+          "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/avutil-56.dll')\")",
+          "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/swscale-5.dll')\")",
+          "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/swresample-3.dll')\")",
+          ]
+        }, {
+          'destination': '<(module_root_dir)/build/Release/',
+          'files': [
+            "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/avformat-58.dll')\")",
+          "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/avcodec-58.dll')\")",
+          "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/avutil-56.dll')\")",
+          "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/swscale-5.dll')\")",
+          "<!(node -e \"console.log(require.resolve('native-video-deps').slice(0, -9) + '/lib/win/swresample-3.dll')\")",
+          ]
         }],
+        'libraries': [
+          'LabSound.lib',
+        'avformat.lib',
+        'avcodec.lib',
+        'avutil.lib',
+        'swscale.lib',
+        'swresample.lib',
+        ],
+      }],
         ['OS=="mac"', {
         'library_dirs': [
             '<(module_root_dir)/labsound/bin',

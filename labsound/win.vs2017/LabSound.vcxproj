@@ -961,10 +961,10 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\src;$(ProjectDir)..\third_party;$(ProjectDir)..\third_party\STK;$(ProjectDir)..\..\node_modules\native-video-deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG;_ITERATOR_DEBUG_LEVEL=0;STATICALLY_LINKED_WITH_WTF;WIN32;D_VARIADIC_MAX=10;D_NOMINMAX;NOMINMAX;WTF_USE_WEBAUDIO_KISSFFT=1;__WINDOWS_WASAPI__;HAVE_NO_OFLOG;HAVE_BOOST_THREAD;HAVE_LIBDL;HAVE_ALLOCA;HAVE_UNISTD_H;__OS_WINDOWS__;__LITTLE_ENDIAN__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG;STATICALLY_LINKED_WITH_WTF;WIN32;D_VARIADIC_MAX=10;D_NOMINMAX;NOMINMAX;WTF_USE_WEBAUDIO_KISSFFT=1;__WINDOWS_WASAPI__;HAVE_NO_OFLOG;HAVE_BOOST_THREAD;HAVE_LIBDL;HAVE_ALLOCA;HAVE_UNISTD_H;__OS_WINDOWS__;__LITTLE_ENDIAN__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>
       </PrecompiledHeader>
@@ -995,9 +995,9 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)..\include;$(ProjectDir)..\src;$(ProjectDir)..\third_party;$(ProjectDir)..\third_party\STK;$(ProjectDir)..\..\node_modules\native-video-deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG;_ITERATOR_DEBUG_LEVEL=0;STATICALLY_LINKED_WITH_WTF;WIN32;D_VARIADIC_MAX=10;D_NOMINMAX;NOMINMAX;WTF_USE_WEBAUDIO_KISSFFT=1;__WINDOWS_WASAPI__;HAVE_NO_OFLOG;HAVE_BOOST_THREAD;HAVE_LIBDL;HAVE_ALLOCA;HAVE_UNISTD_H;__OS_WINDOWS__;__LITTLE_ENDIAN__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG;STATICALLY_LINKED_WITH_WTF;WIN32;D_VARIADIC_MAX=10;D_NOMINMAX;NOMINMAX;WTF_USE_WEBAUDIO_KISSFFT=1;__WINDOWS_WASAPI__;HAVE_NO_OFLOG;HAVE_BOOST_THREAD;HAVE_LIBDL;HAVE_ALLOCA;HAVE_UNISTD_H;__OS_WINDOWS__;__LITTLE_ENDIAN__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>
       </PrecompiledHeader>
