@@ -2,4 +2,5 @@
 
 ./android-config.sh
 make clean
-cmake --build .
+cmake -D ANDROID=1 .
+make -j4
