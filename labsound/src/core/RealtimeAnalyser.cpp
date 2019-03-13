@@ -81,6 +81,8 @@ RealtimeAnalyser::~RealtimeAnalyser()
 
 }
 
+RealtimeAnalyser& RealtimeAnalyser::operator=(RealtimeAnalyser &&other) = default;
+
 void RealtimeAnalyser::reset()
 {
     m_writeIndex = 0;

@@ -23,6 +23,7 @@ class RealtimeAnalyser
 public:
     RealtimeAnalyser(uint32_t fftSize);
     virtual ~RealtimeAnalyser();
+    RealtimeAnalyser &operator=(RealtimeAnalyser &&realtimeAnalyser);
     
     void reset();
 
