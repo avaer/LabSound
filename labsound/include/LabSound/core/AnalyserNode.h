@@ -40,6 +40,8 @@ public:
     void getByteFrequencyData(std::vector<uint8_t>& array) { m_analyser.getByteFrequencyData(array); }
     void getFloatTimeDomainData(std::vector<float>& array) { m_analyser.getFloatTimeDomainData(array); } // LabSound
     void getByteTimeDomainData(std::vector<uint8_t>& array) { m_analyser.getByteTimeDomainData(array); }
+    
+    void setFFTSize(ContextRenderLock& r, size_t fftSize);
 
 private:
 
