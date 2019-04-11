@@ -130,4 +130,27 @@ void AudioDestinationGeneric::stopRecording()
     }
 }
 
+void *(*adgCreate)(float sampleRate, std::function<void(int numberOfFrames, void *outputBuffer, void *inputBuffer)> renderFn) = nullptr;
+void (*adgDestroy)(void *audioDestinationGenericImpl) = nullptr;
+bool (*adgStart)(void *audioDestinationGenericImpl) = nullptr;
+bool (*adgStop)(void *audioDestinationGenericImpl) = nullptr;
+bool (*adgStartRecording)(void *audioDestinationGenericImpl) = nullptr;
+bool (*adgStopRecording)(void *audioDestinationGenericImpl) = nullptr;
+
+void SetGenericFunctions(
+  void *(*padgCreate)(float sampleRate, std::function<void(int numberOfFrames, void *outputBuffer, void *inputBuffer)> renderFn),
+  void (*padgDestroy)(void *audioDestinationGenericImpl),
+  bool (*padgStart)(void *audioDestinationGenericImpl),
+  bool (*padgStop)(void *audioDestinationGenericImpl),
+  bool (*padgStartRecording)(void *audioDestinationGenericImpl),
+  bool (*padgStopRecording)(void *audioDestinationGenericImpl)
+) {
+  adgCreate = padgCreate;
+  adgDestroy = padgDestroy;
+  adgStart = padgStart;
+  adgStop = padgStop;
+  adgStartRecording = padgStartRecording;
+  adgStopRecording = padgStopRecording;
+}
+
 } // namespace lab

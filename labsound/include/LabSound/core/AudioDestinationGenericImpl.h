@@ -3,11 +3,15 @@
 
 #include <functional>
 
-void *adgCreate(float sampleRate, std::function<void(int numberOfFrames, void *outputBuffer, void *inputBuffer)> renderFn);
-void adgDestroy(void *audioDestinationGenericImpl);
-bool adgStart(void *audioDestinationGenericImpl);
-bool adgStop(void *audioDestinationGenericImpl);
-bool adgStartRecording(void *audioDestinationGenericImpl);
-bool adgStopRecording(void *audioDestinationGenericImpl);
+namespace lab {
+
+extern void *(*adgCreate)(float sampleRate, std::function<void(int numberOfFrames, void *outputBuffer, void *inputBuffer)> renderFn);
+extern void (*adgDestroy)(void *audioDestinationGenericImpl);
+extern bool (*adgStart)(void *audioDestinationGenericImpl);
+extern bool (*adgStop)(void *audioDestinationGenericImpl);
+extern bool (*adgStartRecording)(void *audioDestinationGenericImpl);
+extern bool (*adgStopRecording)(void *audioDestinationGenericImpl);
+
+}
 
 #endif
