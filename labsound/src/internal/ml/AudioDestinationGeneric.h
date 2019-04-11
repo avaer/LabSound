@@ -2,8 +2,8 @@
 // Copyright (C) 2010, Google Inc. All rights reserved.
 // Copyright (C) 2015+, The LabSound Authors. All rights reserved.
 
-#ifndef AudioDestinationMl_h
-#define AudioDestinationMl_h
+#ifndef AudioDestinationGeneric_h
+#define AudioDestinationGeneric_h
 
 #include "LabSound/core/AudioNode.h"
 #include "LabSound/core/AudioBus.h"
@@ -62,5 +62,5 @@ public:
 
 } // namespace lab
 
-#endif // AAudioDestinationMl_h
+#endif // AAudioDestinationGeneric_h
 
