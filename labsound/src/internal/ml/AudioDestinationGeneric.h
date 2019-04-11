@@ -56,7 +56,7 @@ public:
     bool m_isPlaying = false;
     bool m_isRecording = false;
     
-    AudioDestinationGenericImpl *audioDestinationGenericImpl;
+    void *audioDestinationGenericImpl;
 };
 
 // int outputCallback(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *userData ); 
