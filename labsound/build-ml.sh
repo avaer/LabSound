@@ -5,5 +5,5 @@
 # popd
 
 cmake -D CMAKE_TOOLCHAIN_FILE=.\\toolchain -D LUMIN=1 .
-# make clean
+make clean
 make -j4
