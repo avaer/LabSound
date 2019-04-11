@@ -34,6 +34,7 @@
 #include "LabSound/core/AudioBasicProcessorNode.h"
 #include "LabSound/core/AudioBasicInspectorNode.h"
 #include "LabSound/core/AnalyserNode.h"
+#include "LabSound/core/AudioDestinationGenericImpl.h"
 
 // LabSound Extended Public API
 #include "LabSound/extended/RealtimeAnalyser.h"
