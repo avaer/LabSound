@@ -7,6 +7,7 @@
 
 #include "LabSound/core/AudioNode.h"
 #include "LabSound/core/AudioBus.h"
+#include "LabSound/core/AudioDestinationGenericImpl.h"
 
 #include "internal/AudioDestination.h"
 
