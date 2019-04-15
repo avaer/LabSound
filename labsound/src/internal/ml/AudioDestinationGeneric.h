@@ -2,11 +2,12 @@
 // Copyright (C) 2010, Google Inc. All rights reserved.
 // Copyright (C) 2015+, The LabSound Authors. All rights reserved.
 
-#ifndef AudioDestinationMl_h
-#define AudioDestinationMl_h
+#ifndef AudioDestinationGeneric_h
+#define AudioDestinationGeneric_h
 
 #include "LabSound/core/AudioNode.h"
 #include "LabSound/core/AudioBus.h"
+#include "LabSound/core/AudioDestinationGenericImpl.h"
 
 #include "internal/AudioDestination.h"
 
@@ -22,13 +23,13 @@ extern "C" {
 
 namespace lab {
 
-class AudioDestinationMl : public AudioDestination 
+class AudioDestinationGeneric : public AudioDestination
 { 
 
 public:
 
-    AudioDestinationMl(AudioIOCallback &, float sampleRate);
-    virtual ~AudioDestinationMl();
+    AudioDestinationGeneric(AudioIOCallback &, float sampleRate);
+    virtual ~AudioDestinationGeneric();
 
     virtual void start() override;
     virtual void stop() override;
@@ -39,13 +40,11 @@ public:
     bool isRecording() override { return m_isRecording; }
     float sampleRate() const override { return m_sampleRate; }
 
-    void render(int numberOfFrames, void * outputBuffer, void * inputBuffer);
-
 // protected:
 
     // void configure();
 
-    AudioIOCallback & m_callback;
+    AudioIOCallback &m_callback;
 
     AudioBus m_renderBus = {2, AudioNode::ProcessingSizeInFrames, false};
     AudioBus m_inputBus = {1, AudioNode::ProcessingSizeInFrames, false};
@@ -56,25 +55,13 @@ public:
     float m_sampleRate;
     bool m_isPlaying = false;
     bool m_isRecording = false;
-
-    std::mutex mutex;
     
-    MLHandle outputHandle;
-    MLHandle inputHandle;
-    MLAudioBufferFormat outputAudioBufferFormat;
-    MLAudioBufferFormat inputAudioBufferFormat;
-    std::deque<MLAudioBuffer> outputMlBuffers;
-    std::deque<MLAudioBuffer> inputMlBuffers;
-    std::deque<std::vector<float>> inputBuffers;
-    int outputIndex = 0;
-    int inputIndex = 0;
-    // std::vector<float> outputBuffer;
-    // std::vector<float> inputBuffer;
+    void *audioDestinationGenericImpl;
 };
 
 // int outputCallback(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *userData ); 
 
 } // namespace lab
 
-#endif // AAudioDestinationMl_h
+#endif // AAudioDestinationGeneric_h
 

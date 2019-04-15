@@ -65,6 +65,14 @@ namespace lab
     std::unique_ptr<AudioContext> MakeRealtimeAudioContext(float sampleRate = DefaultSampleRate);
     std::unique_ptr<AudioContext> MakeOfflineAudioContext(float recordTimeMilliseconds);
     std::unique_ptr<AudioContext> MakeOfflineAudioContext(int numChannels, float recordTimeMilliseconds, float sample_rate);
+    void SetGenericFunctions(
+      void *(*padgCreate)(float sampleRate, std::function<void(int numberOfFrames, void *outputBuffer, void *inputBuffer)> renderFn),
+      void (*padgDestroy)(void *audioDestinationGenericImpl),
+      bool (*padgStart)(void *audioDestinationGenericImpl),
+      bool (*padgStop)(void *audioDestinationGenericImpl),
+      bool (*padgStartRecording)(void *audioDestinationGenericImpl),
+      bool (*padgStopRecording)(void *audioDestinationGenericImpl)
+    );
 }
 
 #endif
