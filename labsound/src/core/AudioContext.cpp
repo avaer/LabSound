@@ -72,6 +72,7 @@ void AudioContext::lazyInitialize()
 
                 graphKeepAlive = 0.25f; // pump the graph for the first 0.25 seconds
                 graphUpdateThread = std::thread(&AudioContext::update, this);
+                graphUpdateThread.detach();
 
                 if (!isOfflineContext())
                 {
