@@ -38,11 +38,7 @@ AudioContext::~AudioContext()
     if (!isOfflineContext()) graphKeepAlive = 0.25f;
 
     updateThreadShouldRun = false;
-    if (graphUpdateThread.joinable())
-    {
-        cv.notify_all();
-        graphUpdateThread.join();
-    }
+    cv.notify_all();
 
     //std::unique_lock<std::mutex> lk(m_updateMutex); // do we need this? 
 
