@@ -95,7 +95,8 @@ void AudioDestinationWin::stop()
 {
     try
     {
-        dac->stopStream();
+        dac->abortStream();
+
         m_isPlaying = false;
     }
     catch (RtAudioError & e)
