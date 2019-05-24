@@ -50,7 +50,7 @@ void AnalyserNode::reset(ContextRenderLock&)
 
 void AnalyserNode::setFFTSize(ContextRenderLock& r, size_t fftSize)
 {
-  m_analyser = RealtimeAnalyser(fftSize);
+  m_analyser.setFftSize(fftSize);
 }
     
 } // namespace lab

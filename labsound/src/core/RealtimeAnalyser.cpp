@@ -81,13 +81,23 @@ RealtimeAnalyser::~RealtimeAnalyser()
 
 }
 
-RealtimeAnalyser& RealtimeAnalyser::operator=(RealtimeAnalyser &&other) = default;
-
 void RealtimeAnalyser::reset()
 {
     m_writeIndex = 0;
     m_inputBuffer.zero();
     m_magnitudeBuffer.zero();
+}
+
+void RealtimeAnalyser::setFftSize(uint32_t fftSize) {
+  m_writeIndex = 0;
+
+  uint32_t size = max(min(RoundNextPow2(fftSize), MaxFFTSize), MinFFTSize);
+  m_fftSize = size;
+
+  m_analysisFrame = std::unique_ptr<FFTFrame>(new FFTFrame(size));
+
+  m_inputBuffer.zero();
+  m_magnitudeBuffer.allocate(size / 2);
 }
 
 void RealtimeAnalyser::writeInput(ContextRenderLock &r, AudioBus* bus, size_t framesToProcess)
