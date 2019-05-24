@@ -351,7 +351,9 @@ unsigned SampledAudioNode::numberOfChannels(ContextRenderLock& r)
 }
 
 void SampledAudioNode::setCurrentTime(double currentTime) {
-    m_virtualReadIndex = AudioUtilities::timeToSampleFrame(currentTime, m_sourceBus->sampleRate());
+    if (m_sourceBus) {
+        m_virtualReadIndex = AudioUtilities::timeToSampleFrame(currentTime, m_sourceBus->sampleRate());
+    }
 }
 
 void SampledAudioNode::startGrain(double when, double grainOffset)
